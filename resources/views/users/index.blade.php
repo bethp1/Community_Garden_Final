@@ -30,6 +30,7 @@
                                 <td>{{ $user['name'] }}</td>
                                 <td>{{ $user['email'] }}</td>
                                 <td><a href='/users/edit/{{ $user['id'] }}'>Edit</a></td>
+                                <td><a href='/notes/user/{{$user['id']}}'>Notes</a></td>
                                 
                             </tr>
                         @endforeach

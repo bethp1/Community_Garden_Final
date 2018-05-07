@@ -87,7 +87,7 @@ class PlantsController extends Controller
     {
         Plant::destroy($id);
 
-        $plants = Plant::all();
+        $plants = Plant::where('systemID', app('system')->id)->get();
         return view('plants.index', compact('plants'));
     }
 }

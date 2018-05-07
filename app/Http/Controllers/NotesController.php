@@ -105,8 +105,20 @@ class NotesController extends Controller
         $note = Note::find($request['id']);
         
         $note->comments = $request['comments'];
+        $note ->share = $request['share'];
         $note->imageFileName = app('system')->imageFileName; //$request['imageFileName'];
-        
+
+        if($request->hasFile('imageFileName')) {
+            $file = $request->file('imageFileName');
+            if($file) {
+                $destinationPath = public_path()  . '/uploads';
+                $filename = 'user' . '_' . app('system')->id . '_' . $request['id'] . '_' . $file->getClientOriginalName();
+                $file->move($destinationPath, $filename);  
+                $filename = '/uploads' . '\\' . $filename;
+                $note->imageFileName = $filename;
+            }                
+        }
+
         $note->updated_at = Carbon::now()->toDateTimeString();
         $note->save();
            
@@ -115,6 +127,8 @@ class NotesController extends Controller
             'entityID' => $request['entityID']
         ]);
     }
+
+
 
     /**
      * Display a page to delete a new room
@@ -125,7 +139,10 @@ class NotesController extends Controller
         
         Note::destroy($id);
 
-        $note = Note::all();
+        $notes = Note::where('systemID', app('system')->id)
+        ->where('entity', $entity)
+        ->where('entityID', $entityID)
+        ->get();
 
         return redirect()->route('notes.index', [
             'entity' => $entity, 
