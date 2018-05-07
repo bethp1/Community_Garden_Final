@@ -52,6 +52,32 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="soilType" class="col-md-4 col-form-label text-md-right">{{ __('Soil Type') }}</label>
+
+                            <div class="col-sm-6">	
+                                    <select class="form-control" name="soilType" id="soilType">
+                                        <option value="">Select Soil Type</option>
+                                        @foreach($soiltypes as $soiltype)
+                                            <option value="{{$soiltype->id}}">{{$soiltype->soilType}}</option>
+                                        @endforeach
+                                    </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="PlanterType" class="col-md-4 col-form-label text-md-right">{{ __('Planter Type') }}</label>
+
+                            <div class="col-sm-6">	
+                                    <select class="form-control" name="PlanterType" id="PlanterType">
+                                        <option value="">Select Plant Type</option>
+                                        @foreach($planter as $plantertype)
+                                            <option value="{{$plantertype->id}}">{{$plantertype->PlanterType}}</option>
+                                        @endforeach
+                                    </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="comments" class="col-md-4 col-form-label text-md-right">{{ __('Comments') }}</label>
 
                             <div class="col-md-6">

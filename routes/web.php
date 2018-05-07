@@ -62,4 +62,19 @@ Route::post('/notes/store', 'NotesController@store')->name('notes.store');
 Route::post('/notes/{id}', 'NotesController@update')->name('notes.update');
 Route::get('/note/{entity}/{entityID}/destroy/{id}', 'NotesController@destroy')->name('note.destroy');
 
+Route::get('/planters', 'PlantersController@index')->name('planters.index');
+Route::get('/planters/create', 'PlantersController@create')->name('planters.create');
+Route::post('/planters/store', 'PlantersController@store')->name('planters.store');
+Route::get('/planters/edit/{id}', 'PlantersController@edit')->name('planters.edit');
+Route::post('/planters/{id}', 'PlantersController@update')->name('planters.update');
+Route::get('/planters/destroy/{id}', 'PlantersController@destroy')->name('planters.destroy');
+
+Route::get('/soiltypes', 'SoilTypesController@index')->name('soiltypes.index');
+Route::get('/soiltypes/create', 'SoilTypesController@create')->name('soiltypes.create');
+Route::post('/soiltypes/store', 'SoilTypesController@store')->name('soiltypes.store');
+Route::get('/soiltypes/edit/{id}', 'SoilTypesController@edit')->name('soiltypes.edit');
+Route::post('/soiltypes/{id}', 'SoilTypesController@update')->name('soiltypes.update');
+Route::get('/soiltypes/destroy/{id}', 'SoilTypesController@destroy')->name('soiltypes.destroy');
+
+
 Route::get('/community', 'CommunityController@index')->name('community.index');

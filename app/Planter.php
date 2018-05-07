@@ -4,13 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PlantType extends Model
-
+class Planter extends Model
 {
-
-    //test
-    
     protected $fillable = [
-        'name', 'comments', 'systemID'
+        'PlanterType', 'comments','systemID'
     ];
 }

@@ -5,6 +5,8 @@ use App\Room;
 use App\Note;
 use App\Plant;
 use App\PlantType;
+use App\SoilType;
+use App\Planter;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -18,9 +20,10 @@ class PlantsController extends Controller
 
     public function create() {
         $rooms = Room::where('systemID', app('system')->id)->get(['id', 'name']);
-        $planttypes = PlantType::where('systemID', app('system')->id)->get(['id', 'name']);
-
-        return view('plants.create', compact('plants', 'rooms', 'planttypes'));
+        $planttypes = Planttype::where('systemID', app('system')->id)->get(['id', 'name']);
+        $soiltypes = Soiltype::where('systemID', app('system')->id)->get(['id', 'soilType']);
+        $planter = Planter::where('systemID', app('system')->id)->get(['id', 'PlanterType']);
+        return view('plants.create', compact('plants', 'rooms', 'planttypes','soiltypes', 'planter'));
     }
 
     public function store(Request $request) 
@@ -32,6 +35,8 @@ class PlantsController extends Controller
             'systemID' => app('system')->id, // from appServiceprovider
             'imageFileName' => app('system')->imageFileName, // from appServiceprovider
             'planttypeID' => $request['planttype'],
+            'soilTypeID' => $request['soilType'],
+            'PlanterTypeID' => $request['PlanterType'],
             'roomID' => $request['room'],
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString(),
@@ -49,9 +54,10 @@ class PlantsController extends Controller
     {
         $plant = Plant::find($id);
         $rooms = Room::where('systemID', app('system')->id)->get(['id', 'name']);
-        $planttypes = PlantType::where('systemID', app('system')->id)->get(['id', 'name']);
-        
-        return view('plants.edit', compact('plant', 'rooms', 'planttypes'));
+        $planttypes = Planttype::where('systemID', app('system')->id)->get(['id', 'name']);
+        $soiltypes = Soiltype::where('systemID', app('system')->id)->get(['id', 'soilType']);
+        $planter = Planter::where('systemID', app('system')->id)->get(['id', 'PlanterType']);
+        return view('plants.edit', compact('plant', 'rooms', 'planttypes','soiltypes', 'planter'));
 
         // $plant = Plant::find($id);
         // return view('plants.edit')->with('plant', $plant);
