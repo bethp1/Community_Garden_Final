@@ -50,7 +50,7 @@
                             <div class="col-sm-10">	
                                 <select class="form-control" id="share" name="share">
                                
-                                @if($note->entity == 'plant') 
+                               
                                     @if($note->share == 'Yes')
                                         <option value="No">No</option>
                                         <option value="Yes" selected>Yes</option>
@@ -59,14 +59,11 @@
                                         <option value="Yes">Yes</option>
                                     @endif
 
-                                @else 
-                                   
-                                   <option value="No" selected>No</option>
-
-                                @endif
-                                </select>
+                                
+                                 </select>   
                             </div>
                         </div>
+
                         @endif
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

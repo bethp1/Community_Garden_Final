@@ -48,20 +48,12 @@
                             <div class="col-sm-10">	
                                 <select class="form-control" id="share" name="share">
                                
-                                @if($entityDetail['entity']  == 'plant')
+                               
                                         
                                     <option value="Yes" >Yes</option>
-                                 
-                                    <option value="No" >No</option>
-
-                                    @else 
-
                                     <option value="No" selected>No</option>
-                                 
-                                @endif
-
-
-                                </select>
+                                
+                                 </select>
                             </div>
                         </div>
                     

@@ -48,13 +48,22 @@ class NotesController extends Controller
     {
         //dd($request->all());
 
+        if(($request ['share'] == null )||( $request ['share'] == 'No')) {
+
+            $share = 'No';
+       
+        }else{
+
+            $share = "Yes";
+
+        }
         $newNote = Note::create([
             'entity' => $request['entity'],
             'entityID' => (int)$request['entityID'],
             'userID' => Auth::user()->id,
             'comments' => $request['comments'],
             
-            'share' => $request['share'],
+            'share' => $share,
             'imageFileName' => app('system')->imageFileName,  //'imageFileName' => null
             'systemID' => app('system')->id, // from appServiceprovider
             'created_at' => Carbon::now()->toDateTimeString(),
@@ -107,7 +116,9 @@ class NotesController extends Controller
         $note = Note::find($request['id']);
         
         $note->comments = $request['comments'];
-        $note ->share = $request['share'];
+        $note->share = (($request['share']== null) || ($request['share']== 'No')) ? 'No' : 'Yes';
+
+
         $note->imageFileName = app('system')->imageFileName; //$request['imageFileName'];
 
         if($request->hasFile('imageFileName')) {
