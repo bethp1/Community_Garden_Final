@@ -27,7 +27,7 @@ class NotesTableSeeder extends Seeder
             'userID' => 2,
             'entity' => 'plant',
             'entityID' => 1,
-            'comments' => 'growing stronger today  - could be due to nice eahther',
+            'comments' => 'growing stronger today  - could be due to nice weather',
             'imageFileName' => '/img/default.png',
             'share' => 'Yes',
             'created_at' => now(),
