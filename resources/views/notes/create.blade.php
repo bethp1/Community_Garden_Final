@@ -41,6 +41,7 @@
                                 @endif
                             </div>
                         </div>
+                        @if($entityDetail['entity']  == 'plant')
 
                         <div class="form-group">
                             <label for="share" class="control-label col-sm-2">Share:<strong style="color:darkred;">*</strong></label>
@@ -64,7 +65,7 @@
                             </div>
                         </div>
                     
-
+                        @endif
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

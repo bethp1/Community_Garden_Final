@@ -43,11 +43,14 @@
                             </div>
                         </div>
 
+                         @if($note->entity == 'plant')
+
                         <div class="form-group">
                             <label for="share" class="control-label col-sm-2">Share:<strong style="color:darkred;">*</strong></label>
                             <div class="col-sm-10">	
                                 <select class="form-control" id="share" name="share">
-                                @if($note->entity == 'plant')
+                               
+                                @if($note->entity == 'plant') 
                                     @if($note->share == 'Yes')
                                         <option value="No">No</option>
                                         <option value="Yes" selected>Yes</option>
@@ -56,7 +59,7 @@
                                         <option value="Yes">Yes</option>
                                     @endif
 
-                                   @else 
+                                @else 
                                    
                                    <option value="No" selected>No</option>
 
@@ -64,7 +67,7 @@
                                 </select>
                             </div>
                         </div>
-
+                        @endif
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
