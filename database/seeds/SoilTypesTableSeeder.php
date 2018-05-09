@@ -14,6 +14,7 @@ class SoilTypesTableSeeder extends Seeder
         DB::table('soil_types')->insert([
             'soilType' => 'sandy',
             'systemID' => 2,
+            'imageFileName' => '/img/default.png',
             'comments' => 'planted carrots to test how they grow',
             'created_at' => now(),
             'updated_at' => now(),

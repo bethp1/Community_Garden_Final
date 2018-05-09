@@ -1,0 +1,53 @@
+/*
+My custom CSS
+*/
+
+
+.navbar-light .navbar-brand, .navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover{
+    color: #022F0E;
+  }
+  
+ 
+  .navbar-light .navbar-nav .nav-link{
+
+    color: #749451;
+}
+.navbar-light .navbar-nav .nav-link:hover{
+
+    color: #022F0E;
+}
+
+.card-header  {
+
+    background-color: rgba(116, 148, 81, 0.2);
+}
+a{
+    color: #5C7700;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+
+    color:  #022F0E;
+
+}
+.btn-primary {
+
+    background-color:  #022F0E;
+    border-color: #022F0E;
+}
+
+.btn-primary:hover {
+
+    background-color: #5C7700;
+    border-color: #5C7700;
+    
+}
+.col-form-label {
+
+    color:  #022F0E;
+}
+.table td, .table th, .table tr {
+
+  
+    border-color: #CBC89D;
+}
+

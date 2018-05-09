@@ -22,6 +22,18 @@ class PlantersController extends Controller
     public function store(Request $request) 
     {
         // dd($request->all());
+
+        $filename = "";
+        if($request->hasFile('imageFileName')) {
+            $file = $request->file('imageFileName');
+            if($file) {
+                $destinationPath = public_path()  . '/uploads';
+                $filename = 'user' . '_' . app('system')->id . '_' . $request['id'] . '_' . $file->getClientOriginalName();
+                $file->move($destinationPath, $filename);  
+                $filename = '/uploads' . '\\' . $filename;
+                
+            }                
+        }
         $newplanters = Planter::create([
             'PlanterType' => $request['PlanterType'],
             'comments' => $request['comments'],
@@ -29,6 +41,8 @@ class PlantersController extends Controller
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
+
+        
 
         return redirect('planters');
     }
@@ -48,6 +62,17 @@ class PlantersController extends Controller
         
             $planter->PlanterType = $request['PlanterType'];
             $planter->comments = $request['comments'];
+
+            if($request->hasFile('imageFileName')) {
+                $file = $request->file('imageFileName');
+                if($file) {
+                    $destinationPath = public_path()  . '/uploads';
+                    $filename = 'user' . '_' . app('system')->id . '_' . $request['id'] . '_' . $file->getClientOriginalName();
+                    $file->move($destinationPath, $filename);  
+                    $filename = '/uploads' . '\\' . $filename;
+                    $planter->imageFileName = $filename;
+                }                
+            }
             
             $planter->updated_at = Carbon::now()->toDateTimeString();
             $planter->save();

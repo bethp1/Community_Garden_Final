@@ -68,7 +68,7 @@ class RoomsController extends Controller
     {
         Room::destroy($id);
 
-        $rooms = Room::all();
+        $rooms = Room::where('systemID', app('system')->id)->get();
         return view('rooms.index', compact('rooms'));
     }
 }

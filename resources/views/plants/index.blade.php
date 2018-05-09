@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    plants <br />
+                    Plants <br />
                     <a href='/plants/create'>Add Plant</a>
                 </div>
 

@@ -18,6 +18,7 @@ class CreateSoilTypesTable extends Migration
                 $table->increments('id');
                 $table->integer('systemID');
                 $table->string('soilType');
+                $table->string('imageFileName')->nullable();
                 $table->string('comments')->nullable();
                 $table->timestamps();
             });

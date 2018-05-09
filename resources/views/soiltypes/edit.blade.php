@@ -26,12 +26,25 @@
                                 @endif
                             </div>
                         </div> 
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} row">
+                            <label for="imageFileName" class="col-md-4 control-label">Name</label>
+
+                            <div class="col-md-6">
+                                <input id="imageFileName" type="file" class="form-control" name="imageFileName" value='{{ $soiltype->imageFileName }}'>
+
+                                @if ($errors->has('imageFileName'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('imageFileName') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="comments" class="col-md-4 col-form-label text-md-right">{{ __('Comments') }}</label>
 
                             <div class="col-md-6">
-                                {{-- <input id="comment" type="text" class="form-control{{ $errors->has('comment') ? ' is-invalid' : '' }}" name="comment" value="{{ old('comment') }}"> --}}
+                                {{-- <input id="comment" type="text" class="form-control{{ $errors->has('comment') ? ' is-invalid' : '' }}" name="comment" value="{{ $soiltypes('comment') }}"> --}}
                                 <textarea id='noteTextarea' name="comments" rows='4' cols='55' maxlength='1056'>{{ $soiltype->comments }}</textarea>
                                 @if ($errors->has('comments'))
                                     <span class="invalid-feedback">

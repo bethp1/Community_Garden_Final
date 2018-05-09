@@ -14,6 +14,7 @@ class PlantersTableSeeder extends Seeder
         DB::table('planters')->insert([
         'PlanterType' => 'Clay',
         'comments' => 'planted carrots',
+        'imageFileName' => '/img/default.png',
         'systemID' => 2,
          'created_at' => now(),
         'updated_at' => now(),

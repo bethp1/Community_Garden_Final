@@ -47,6 +47,7 @@
                             <label for="share" class="control-label col-sm-2">Share:<strong style="color:darkred;">*</strong></label>
                             <div class="col-sm-10">	
                                 <select class="form-control" id="share" name="share">
+                                @if($note->entity == 'plant')
                                     @if($note->share == 'Yes')
                                         <option value="No">No</option>
                                         <option value="Yes" selected>Yes</option>
@@ -54,6 +55,12 @@
                                         <option value="No" selected>No</option>
                                         <option value="Yes">Yes</option>
                                     @endif
+
+                                   @else 
+                                   
+                                   <option value="No" selected>No</option>
+
+                                @endif
                                 </select>
                             </div>
                         </div>

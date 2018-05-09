@@ -24,11 +24,23 @@ class SoilTypesController extends Controller
         // dd($request->all());
         $newsoiltypes = Soiltype::create([
             'soilType' => $request['soilType'],
+            'imageFileName' => app('system')->imageFileName,
             'comments' => $request['comments'],
             'systemID' => app('system')->id, // from appServiceprovider
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
+        $filename = "";
+        if($request->hasFile('imageFileName')) {
+            $file = $request->file('imageFileName');
+            if($file) {
+                $destinationPath = public_path()  . '/uploads';
+                $filename = 'user' . '_' . app('system')->id . '_' . $request['id'] . '_' . $file->getClientOriginalName();
+                $file->move($destinationPath, $filename);  
+                $filename = '/uploads' . '\\' . $filename;
+                
+            }                
+        }
 
         return redirect('soiltypes');
     }
@@ -48,6 +60,17 @@ class SoilTypesController extends Controller
         
             $soiltypes->soilType = $request['soilType'];
             $soiltypes->comments = $request['comments'];
+
+            if($request->hasFile('imageFileName')) {
+                $file = $request->file('imageFileName');
+                if($file) {
+                    $destinationPath = public_path()  . '/uploads';
+                    $filename = 'user' . '_' . app('system')->id . '_' . $request['id'] . '_' . $file->getClientOriginalName();
+                    $file->move($destinationPath, $filename);  
+                    $filename = '/uploads' . '\\' . $filename;
+                    $soiltypes->imageFileName = $filename;
+                }                
+            }
             
             $soiltypes->updated_at = Carbon::now()->toDateTimeString();
             $soiltypes->save();

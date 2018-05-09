@@ -68,7 +68,7 @@ class PlantTypesController extends Controller
     {
         planttype::destroy($id);
 
-        $planttypes = planttype::all();
+        $planttypes = PlantType::where('systemID', app('system')->id)->get();
         return view('planttypes.index', compact('planttypes'));
     }
 }

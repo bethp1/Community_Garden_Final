@@ -95,7 +95,7 @@ class UsersController extends Controller
     {
         User::destroy($id);
 
-        $users = User::all();
+        $users = User::where('systemID', app('system')->id)->get();
         return view('users.index', compact('users'));
     }
 }

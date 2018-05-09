@@ -53,14 +53,16 @@ class NotesController extends Controller
             'entityID' => (int)$request['entityID'],
             'userID' => Auth::user()->id,
             'comments' => $request['comments'],
+            
             'share' => $request['share'],
-            'imageFileName' => null,  //"$request['imageFileName']",
+            'imageFileName' => app('system')->imageFileName,  //'imageFileName' => null
             'systemID' => app('system')->id, // from appServiceprovider
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString(),
         ])->id;
 
-        if($request->hasFile('imageFileName')) {
+       
+            if($request->hasFile('imageFileName')) {
             $file = $request->file('imageFileName');
             if($file) {
                 $destinationPath = public_path()  . '/uploads';

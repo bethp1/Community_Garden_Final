@@ -15,3 +15,23 @@ CSS related to the comuunity page
     height: 30px;
 
 }
+div{
+
+    margin:auto;
+}
+.row{
+
+    margin:auto;
+}
+.table td{
+
+    color:  #022F0E;
+    border-color: #CBC89D;
+}
+.panel-heading{
+
+    color: #5C7700;
+    text-align: center;
+    font-size: 25pt;
+    padding-bottom: 20px;
+}

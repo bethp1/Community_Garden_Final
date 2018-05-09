@@ -17,6 +17,7 @@ class CreatePlantersTable extends Migration
             $table->increments('id');
             $table->String('PlanterType');
             $table->integer('systemID');
+            $table->string('imageFileName')->nullable();
             $table->string('comments')->nullable();
             $table->timestamps();
         });
